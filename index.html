@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="中興大學選課小幫手 - 幫助您更輕鬆地規劃課程">
+    <meta name="keywords" content="中興大學,選課,課表,NCHU,課程查詢">
+    <meta name="author" content="NCHU Course Helper">
+    <meta name="theme-color" content="#4CAF50">
+    
+    <title>中興大學選課小幫手</title>
+    
+    <!-- 預載入關鍵資源 -->
+    <link rel="preload" href="./styles.css" as="style">
+    <link rel="preload" href="./script.js" as="script">
+
+    <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+    <header class="top-bar">
+        <h1 class="app-title">中興大學選課小幫手</h1>
+        
+        <div class="search-section">
+            <div class="search-wrapper">
+                <input type="text" 
+                       placeholder="搜尋課程（例如：生命科學系）"
+                       aria-label="課程搜尋">
+                <button class="advanced-search-toggle">
+                    進階搜尋
+                </button>
+            </div>
+            
+            <div class="advanced-search-panel">
+                <div class="search-fields-grid">
+                    <div class="search-field">
+                        <label for="dept">授課系所</label>
+                        <select id="dept">
+                            <option value="">全部系所</option>
+                        </select>
+                    </div>
+                    
+                    <div class="search-field">
+                        <label for="grade">年級</label>
+                        <select id="grade">
+                            <option value="">不限</option>
+                            <option value="1">大一</option>
+                            <option value="2">大二</option>
+                            <option value="3">大三</option>
+                            <option value="4">大四</option>
+                        </select>
+                    </div>
+                    
+                    <div class="search-field">
+                        <label for="type">必選修</label>
+                        <select id="type">
+                            <option value="">全部</option>
+                            <option value="必修">必修</option>
+                            <option value="選修">選修</option>
+                        </select>
+                    </div>
+                    
+                    <div class="search-field">
+                        <label for="credits">學分數</label>
+                        <select id="credits">
+                            <option value="">不限</option>
+                            <option value="0">0 學分</option>
+                            <option value="1">1 學分</option>
+                            <option value="2">2 學分</option>
+                            <option value="3">3 學分</option>
+                            <option value="4">4 學分</option>
+                        </select>
+                    </div>
+                    
+                    <div class="search-field">
+                        <label for="language">授課語言</label>
+                        <select id="language">
+                            <option value="">不限</option>
+                            <option value="中文">中文</option>
+                            <option value="英文">英文</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="search-actions">
+                    <button class="reset-btn">重置</button>
+                    <button class="search-btn">套用篩選</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="status-section">
+            <div class="status-item">
+                <span class="credits" aria-label="總學分">0 學分</span>
+            </div>
+            <div class="status-item">
+                <span class="hours" aria-label="總時數">0 小時</span>
+            </div>
+        </div>
+
+        <nav class="side-nav">
+            <button class="nav-btn active" aria-pressed="true">所有課程</button>
+            <button class="nav-btn" aria-pressed="false">學期必修</button>
+            <button class="nav-btn" aria-pressed="false">已選課表</button>
+        </nav>
+    </header>
+
+    <main class="main-content" role="main">
+        <div class="loading hidden" id="loading" aria-hidden="true">
+            <div class="loading-spinner">
+                <div class="spinner"></div>
+                <div class="loading-text">載入中...</div>
+            </div>
+        </div>
+        <div class="content-wrapper">
+            <div class="course-container">
+                <div class="table-wrapper">
+                    <table class="course-table" role="grid">
+                        <thead>
+                            <tr>
+                                <th scope="col" class="checkbox-col">
+                                    <input type="checkbox" id="selectAll" aria-label="選擇全部課程">
+                                </th>
+                                <th scope="col">課號</th>
+                                <th scope="col">名稱</th>
+                                <th scope="col">時間</th>
+                                <th scope="col">系所</th>
+                                <th scope="col">必選</th>
+                                <th scope="col">學分</th>
+                                <th scope="col">語言</th>
+                                <th scope="col">年級</th>
+                                <th scope="col">教師</th>
+                                <th scope="col">備註</th>
+                            </tr>
+                        </thead>
+                        <tbody id="courseTableBody">
+                            <!-- 課程資料將由 JavaScript 動態插入 -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <div class="schedule-container">
+                <div class="schedule-header">
+                    <h2>課表預覽</h2>
+                </div>
+                <div class="table-wrapper">
+                    <table class="schedule-table" role="grid">
+                        <thead>
+                            <tr>
+                                <th scope="col">節次</th>
+                                <th scope="col">一</th>
+                                <th scope="col">二</th>
+                                <th scope="col">三</th>
+                                <th scope="col">四</th>
+                                <th scope="col">五</th>
+                            </tr>
+                        </thead>
+                        <tbody id="scheduleTableBody">
+                            <!-- 由 JavaScript 動態生成課表內容 -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div id="tooltip" class="tooltip hidden" role="tooltip"></div>
+
+    <!-- 延遲載入非關鍵 JavaScript -->
+    <script src="./script.js" defer></script>
+</body>
+</html> 

@@ -1,0 +1,18 @@
+# macOS系統文件
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# api
+.env
+
+# 聊天紀錄
+/chat_history/
+
+
+# 上傳的文件
+/uploads/

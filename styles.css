@@ -1,0 +1,532 @@
+/* 重設基礎樣式 */
+:root {
+    --header-height: 60px;  /* 根據您的頂部導航實際高度調整 */
+    /* 主色調 - 柔和的藍紫色 */
+    --primary: #6366f1;
+    --primary-light: rgba(99, 102, 241, 0.1);
+    --primary-light-hover: rgba(99, 102, 241, 0.15);
+    --primary-dark: #1d4ed8;
+    --secondary: #0ea5e9;
+    --accent: #8b5cf6;
+    
+    /* 輔助色調 */
+    --success: #10b981;
+    --warning: #f59e0b;
+    --error: #ef4444;
+    --info: #3b82f6;
+    
+    /* 中性色調 */
+    --gray-50: #f8fafc;
+    --gray-100: #f1f5f9;
+    --gray-200: #e2e8f0;
+    --gray-300: #cbd5e1;
+    --gray-400: #94a3b8;
+    --gray-500: #64748b;
+    --gray-600: #475569;
+    --gray-700: #334155;
+    --gray-800: #1e293b;
+    --gray-900: #0f172a;
+    
+    /* 背景色 */
+    --bg-primary: #ffffff;
+    --bg-secondary: #f8fafc;
+    
+    /* 字體 */
+    --font-sans: 'Noto Sans TC', system-ui, -apple-system, sans-serif;
+    
+    /* 特殊效果 */
+    --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+    --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+}
+
+/* 基礎設置 */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-sans);
+    background: var(--bg-secondary);
+    color: var(--gray-800);
+    line-height: 1.6;
+}
+
+
+/* 頂部導航欄 */
+.top-bar {
+    background: var(--bg-primary);
+    border-bottom: 1px solid var(--gray-200);
+    padding: 0.75rem 1.5rem;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    height: var(--header-height);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+}
+
+.app-title {
+    font-size: 1.1rem;
+    color: var(--gray-800);
+    font-weight: 600;
+    margin: 0;
+    white-space: nowrap;
+}
+
+/* 搜尋區域 */
+.search-section {
+    position: relative;
+    width: 300px;
+}
+
+.search-wrapper {
+    position: relative;
+}
+
+.search-wrapper input {
+    width: 100%;
+    height: 32px;
+    padding: 0 2.5rem 0 0.75rem;
+    border: 1px solid var(--gray-200);
+    border-radius: 6px;
+    font-size: 0.9rem;
+    background: var(--bg-primary);
+}
+
+.advanced-search-toggle {
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 32px;
+    padding: 0 0.75rem;
+    border: none;
+    background: none;
+    color: var(--gray-500);
+    font-size: 0.85rem;
+    border-left: 1px solid var(--gray-200);
+    cursor: pointer;
+}
+
+.advanced-search-toggle:hover {
+    color: var(--primary);
+    background: var(--gray-50);
+}
+
+/* 進階搜尋面板 */
+.advanced-search-panel {
+    position: absolute;
+    top: calc(100% + 4px);
+    right: 0;
+    width: 280px;
+    background: var(--bg-primary);
+    border-radius: 8px;
+    box-shadow: var(--shadow-lg);
+    border: 1px solid var(--gray-200);
+    padding: 1rem;
+    display: none;
+}
+
+.advanced-search-panel.show {
+    display: block;
+}
+
+.search-fields-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.search-field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.search-field label {
+    font-size: 0.85rem;
+    color: var(--gray-600);
+}
+
+.search-field select {
+    width: 100%;
+    height: 32px;
+    padding: 0 0.5rem;
+    border: 1px solid var(--gray-200);
+    border-radius: 4px;
+    font-size: 0.9rem;
+    background: var(--bg-primary);
+}
+
+.search-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.5rem;
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--gray-100);
+}
+
+.search-actions button {
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    cursor: pointer;
+}
+
+.reset-btn {
+    background: var(--gray-50);
+    border: 1px solid var(--gray-200);
+    color: var(--gray-700);
+}
+
+.search-btn {
+    background: var(--primary);
+    border: 1px solid var(--primary);
+    color: white;
+}
+
+.status-section {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin-right: 0;
+}
+
+.status-item {
+    display: flex;
+    align-items: center;
+    font-size: 0.9rem;
+    background: var(--gray-100);
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    transition: all 0.2s;
+    border: 1px solid var(--gray-200);
+}
+
+.credits, .hours {
+    font-weight: 600;
+    color: var(--primary);
+}
+
+.side-nav {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.nav-btn {
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--gray-200);
+    border-radius: 8px;
+    background: var(--bg-primary);
+    color: var(--gray-700);
+    cursor: pointer;
+    transition: all 0.2s;
+    font-weight: 500;
+}
+
+.nav-btn:hover {
+    background: var(--gray-100);
+    border-color: var(--gray-300);
+}
+
+.nav-btn.active {
+    background: var(--primary);
+    color: white;
+    border-color: var(--primary);
+}
+
+/* 主要內容區域布局 */
+.main-content {
+    padding: 1rem;
+    padding-top: calc(var(--header-height) + 1rem);
+    max-width: 1800px;
+    margin: 0 auto;
+}
+
+.content-wrapper {
+    display: block;
+    position: relative;
+    padding-right: 420px;
+    margin-top: 1rem;
+}
+
+/* 課程列表容器 */
+.course-container {
+    background: var(--bg-primary);
+    border-radius: 12px;
+    box-shadow: var(--shadow-md);
+    overflow: hidden;
+}
+
+/* 課表容器 */
+.schedule-container {
+    position: fixed;
+    top: calc(var(--header-height) + 1rem);
+    right: calc((100% - min(1800px, 100% - 2rem)) / 2 + 1rem);
+    width: 400px;
+    background: var(--bg-primary);
+    border-radius: 12px;
+    box-shadow: var(--shadow-md);
+    max-height: calc(100vh - var(--header-height) - 2rem);
+    overflow-y: auto;
+    z-index: 50;
+}
+
+.schedule-header {
+    padding: 1rem;
+    border-bottom: 1px solid var(--gray-200);
+}
+
+.schedule-header h2 {
+    margin: 0;
+    font-size: 1.1rem;
+    color: var(--gray-800);
+    font-weight: 600;
+}
+
+/* 表格樣式 */
+.table-wrapper {
+    overflow-x: auto;
+}
+
+.course-table, .schedule-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+}
+
+.course-table th,
+.course-table td,
+.schedule-table th,
+.schedule-table td {
+    padding: 0.75rem;
+    text-align: left;
+    border-bottom: 1px solid var(--gray-200);
+}
+
+.course-table th {
+    background: var(--bg-secondary);
+    border-bottom: 2px solid var(--gray-200);
+    color: var(--gray-700);
+}
+
+.schedule-table th {
+    padding: 0.75rem;
+    background: var(--bg-secondary);
+    font-weight: 600;
+    color: var(--gray-700);
+    text-align: center;
+    border-bottom: 2px solid var(--gray-200);
+}
+
+.schedule-table td {
+    padding: 0.5rem;
+    text-align: center;
+    border: 1px solid var(--gray-200);
+    height: 2.5rem;
+    vertical-align: middle;
+    font-size: 0.85rem;
+    position: relative;
+}
+
+.schedule-table td.has-course {
+    background-color: var(--primary);
+    color: white;
+    font-weight: 500;
+    cursor: pointer;
+    padding: 0.25rem;
+    transition: all 0.2s ease;
+}
+
+.schedule-table td.has-course:hover {
+    background-color: var(--gray-800);
+    transform: scale(1.02);
+    z-index: 1;
+}
+
+/* 課程格子內容樣式 */
+.course-cell {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    padding: 0.25rem;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.85rem;
+}
+
+.course-cell .course-name {
+    font-weight: 500;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+}
+
+.course-cell .course-info {
+    font-size: 0.75rem;
+    opacity: 0.9;
+}
+
+/* 節次欄位樣式 */
+.schedule-table th:first-child,
+.schedule-table td:first-child {
+    background-color: var(--bg-secondary);
+    font-weight: 500;
+    color: var(--gray-600);
+    border-right: 2px solid var(--gray-200);
+    width: 2.5rem;
+}
+
+/* 不同時段的背景色區分 */
+.schedule-table tr:nth-child(even) td:not(.has-course):not(:first-child) {
+    background-color: var(--gray-50);
+}
+
+/* 更新相關樣式以使用新的顏色變數 */
+.course-table tbody tr.selected {
+    background-color: var(--primary-light);
+}
+
+.course-table tbody tr.selected:hover {
+    background-color: var(--primary-light-hover);
+}
+
+.course-table td:nth-child(2) {  /* 課號 */
+    color: var(--primary);
+}
+
+.course-table td:nth-child(6)[data-obligatory="必修"] {  /* 必修標記 */
+    color: var(--error);
+}
+
+.course-table td:nth-child(7) {  /* 學分數 */
+    color: var(--info);
+}
+
+/* 表格懸停效果 */
+.course-table tbody tr:hover {
+    background-color: var(--gray-50);
+}
+
+/* 表頭樣式 */
+.course-table th {
+    background: var(--bg-secondary);
+    border-bottom: 2px solid var(--gray-200);
+    color: var(--gray-700);
+}
+
+/* 表格內容樣式 */
+.course-table td {
+    border-bottom: 1px solid var(--gray-100);
+    color: var(--gray-800);
+}
+
+/* 容器陰影效果 */
+.course-container {
+    box-shadow: var(--shadow-md);
+}
+
+/* 捲軸樣式 */
+.table-wrapper::-webkit-scrollbar-track {
+    background: var(--gray-100);
+}
+
+.table-wrapper::-webkit-scrollbar-thumb {
+    background: var(--gray-300);
+}
+
+.table-wrapper::-webkit-scrollbar-thumb:hover {
+    background: var(--gray-400);
+}
+
+/* 載入動畫相關樣式 */
+.loading {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.loading.hidden {
+    display: none;
+}
+
+.loading-spinner {
+    text-align: center;
+}
+
+.spinner {
+    width: 50px;
+    height: 50px;
+    border: 5px solid var(--gray-200);
+    border-top: 5px solid var(--primary);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin: 0 auto 1rem;
+}
+
+.loading-text {
+    color: var(--gray-700);
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* 在 .schedule-table td.has-course 樣式後添加 */
+.schedule-table td.has-course.conflict {
+    background-color: var(--error);
+    position: relative;
+}
+
+.schedule-table td.has-course.conflict::after {
+    content: '⚠️';
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    font-size: 12px;
+}
+
+/* 更新課程格子的樣式 */
+.course-cell {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    padding: 0.25rem;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.85rem;
+}
+
+.course-cell .course-name {
+    font-weight: 500;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+}
+
+.course-cell .course-info {
+    font-size: 0.75rem;
+    opacity: 0.9;
+}
+
+
+
