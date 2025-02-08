@@ -89,7 +89,7 @@ class CourseHelper {
 
     async fetchCourses() {
         try {
-            const response = await fetch('/data/courses.json');
+            const response = await fetch('https://raw.githubusercontent.com/EricYang801/NCHU_Course_Helper/refs/heads/main/data/courses.json');
             if (!response.ok) {
                 throw new Error('無法載入課程資料');
             }
