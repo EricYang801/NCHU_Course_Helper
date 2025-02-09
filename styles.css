@@ -851,5 +851,16 @@ body {
     }
 }
 
+.course-code {
+    color: var(--primary);
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.course-code:hover {
+    color: var(--primary-dark);
+    text-decoration: underline;
+}
+
 
 
