@@ -26,7 +26,7 @@
 
 ## 怎麼用？
 
-1. 進網站：[中興大學選課小幫手](https://github.com/EricYang801/NCHU_Course_Helper)
+1. 進網站：[中興大學選課小幫手](https://ericyang801.github.io/NCHU_Course_Helper/)
 2. 找你想選的課（用搜尋或篩選）
 3. 勾選有興趣的課，課表會自動更新
 4. 想看課程大綱？點課號就對了！
