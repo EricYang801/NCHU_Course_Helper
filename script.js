@@ -255,7 +255,7 @@ class CourseHelper {
                            aria-label="選擇 ${course.title_parsed?.zh_TW || course.title}">
                 </td>
                 <td>
-                    <a href="https://onepiece2-sso.nchu.edu.tw/cofsys/plsql/Syllabus_main?v_strm=1132&v_class_nbr=${course.url}" 
+                    <a href="https://onepiece.nchu.edu.tw/cofsys/plsql/Syllabus_main?v_strm=1132&v_class_nbr=${course.url}"
                        class="course-code" 
                        target="_blank" 
                        rel="noopener noreferrer">${course.code}</a>
